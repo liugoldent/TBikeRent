@@ -1,0 +1,69 @@
+html,body{
+    margin: 0; 
+    padding: 0; 
+    height: 100%; 
+    border:none; 
+}
+
+#title{
+    font-family: 'Bree Serif', serif;
+    text-align: center;
+    font-size:150px;
+}
+
+#selectModel{
+    text-align: center;
+}
+
+select#selectMain {
+    width:500px;
+    height:45px;
+    margin:0px auto;
+    font-size:30px;
+    font-family: serif;
+    text-align: center;
+    display:block;
+    margin:0px auto;
+    background-color:#F5FFFA;
+    border-radius:10px; 
+    overflow:hidden
+}
+
+select#selectMain>option{
+    background-color:#E0FFFF;
+}
+
+select { text-align: center }
+option { text-align: center }
+
+ol{
+    margin:0px;
+    padding:0px;
+}
+/*green padding */
+#contextTitle{
+    text-align:center;
+}
+
+#ExShowMap{
+    display:block;
+    margin:0px auto;
+}
+
+#context{
+    text-align:center;
+    font-size:12px;
+}
+
+#ButtonMap{
+    display:block;
+    margin:0px auto;
+}
+
+#map {
+        height: 500px;
+        width:auto;
+      }
+
+
+

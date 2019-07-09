@@ -1,0 +1,390 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+  <title> Vue data</title>
+
+
+
+    <link rel="stylesheet" type="text/css" href="./style/TBike.css">  
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class='container-fluid'>
+  <div id='titleBlock'>
+    <p id="title">T-Bike Rent</p>
+  </div>
+  <div id="app">
+
+<div id="selectModel">
+    <select v-model="area" id="selectMain">
+      <option value="all">All</option>
+      <option v-for="(key,area) in SelectArea">{{area}}</option>
+    </select>
+</div>
+<br/>
+
+
+    <!-- <select v-model="LocationName">
+      <option value="all">All</option>
+      <option v-for="(area,key) in AfterSelectShow" :value='key'>
+          {{area.StationName}}
+      </option>
+    </select>  -->
+
+    <!-- <button @click="ShowMap">
+      MapShow
+    </button> -->
+       <!-- <div id="MMap">
+        <iframe class="Map" v-bind:src="MapLink"></iframe>
+      </div>  -->
+<br>
+
+<ol>
+<div class='row' id="contextTitle">     
+        <!-- <div class='col-lg-3'>
+          <div class="StationName">
+            站名
+          </div>
+        </div>
+      
+        <div class='col-lg-3'>
+          <div class="Address">
+            地址
+          </div>
+        </div>
+
+        <div class='col-lg-3'>
+          <div class="UpdateTime">
+            更新時間
+          </div>
+        </div>
+      
+        <div class='col-lg-1'>
+          <div class="Capacity">
+            總格數
+          </div>
+        </div>
+      
+        <div class='col-lg-1'>
+          <div class="AvaliableBikeCount">
+            可借數
+          </div>
+        </div>
+      
+        <div class='col-lg-1'>
+          <div class="AvaliableSpaceCount">
+            可停數
+          </div>
+        </div>      -->
+</div>
+
+<hr>
+
+<div v-for="(item,value) in AfterSelectShow" :value="value+1">
+<div class='row' id="context">
+
+        <div class='col-12 col-sm-12 col-md-12 col-lg-6'>
+            <div class="StationName">
+            站名：{{item.StationName}}
+            </div>
+        </div>
+
+        <div class='col-12 col-sm-12 col-md-12 col-lg-6'>
+          <div class="Address">
+            地址：{{item.Address}}
+          </div>
+        </div>
+         
+        <div class='col-12 col-sm-12 col-md-12 col-lg-6'>
+          <div class="UpdateTime">
+            更新時間：{{item.UpdateTime}}
+          </div>
+        </div>
+
+        <div class='col-12 col-sm-12 col-md-12 col-lg-6'>
+          <div class="Capacity">
+            總共：{{item.Capacity}}輛
+          </div>
+        </div>
+              
+        <div class='col-12 col-sm-12 col-md-12 col-lg-6'>
+          <div class="AvaliableBikeCount">
+            可借：{{item.AvaliableBikeCount}}輛
+          </div>
+        </div>
+
+        <div class='col-12 col-sm-12 col-md-12 col-lg-6'>
+          <div class="AvaliableSpaceCount">
+            可停：{{item.AvaliableSpaceCount}}輛
+          </div>
+        </div>
+
+</div>
+        <div class="row" id="button">
+          <div class='col-12 col-md-12 col-lg-12'>
+            <button id='ButtonMap' @click="ShowMap(item.StationName)" onclick="location.href='#map'">{{item.StationName}}位置</button>
+          </div>
+        </div>
+
+<hr id="ContextHr">
+<div>
+</ol>
+    
+<div id="map"></div>
+<br>
+<hr id="ContextHr">
+<!--Contact Me -->
+<div id="section5">
+  <div id="section5_text">
+    <h1>Contact Me</h1>
+    <br>
+  </div>
+  <div id="section5_icon">
+    <a href="mailto:liugoldent@gmail.com" style="color:antiquewhite"><i class="fas fa-envelope fa-4x"></i></a>
+    <a href="https://github.com/liugoldent" style="color:antiquewhite"><i class="fab fa-github-square fa-4x"></i></a>
+    <a href="https://www.linkedin.com/in/guan-ting-liu-2016a1109/" style="color:antiquewhite"><i
+        class="fab fa-linkedin fa-4x"></i></a>
+  </div>
+</div>
+<!--頁尾-->
+<footer id="foorter">
+  <div id="copyright">
+    <p>Copyright © Guan-Ting Liu All rights reserved.</p>
+  </div>
+</footer>
+
+  
+    
+  </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.6/vue-router.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vuex/3.0.1/vuex.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap-grid.css'/>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKPRtjCaWwtsRtJLlQWDC4c9UapdhJu1o&callback=initMap" async defer></script>
+  
+  <script>
+    // function AvaliableBikeCountOrNot(){
+    // var AvaliableBikeCount=document.getElementsByClassName('AvaliableBikeCount')
+    // console.log(AvaliableBikeCount[0])
+    // for(let j=0;j< AvaliableBikeCount.length;j++){
+    //   if (AvaliableBikeCount[j]==0){
+    //     AvaliableBikeCount[j].css('color','red');
+    //   }
+    // }
+    // }
+    var cssheight= $(window).height();
+    $('#map').css('height', 'height');
+    $(function () {
+        var w = $(window).width();
+        var h = $(window).height();
+        console.log(w,h)
+        if(w<545){
+          $('#selectMain').css('width','300px');
+          
+        }
+      });
+
+      var map;
+      var Latitude= 22.991429;
+      var Longitude= 120.188112;
+  function initMap() {
+      if(Latitude!=''&& Longitude!=''){
+      var position = {
+        lat: Latitude,
+        lng: Longitude
+      };
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 18,
+        center: position,
+        styles: 
+          [
+            {
+              "featureType": "landscape",
+              "stylers": [
+                {
+                  "hue": "#FFBB00"
+                },
+                {
+                  "saturation": 43.400000000000006
+                },
+                {
+                  "lightness": 37.599999999999994
+                },
+                {
+                  "gamma": 1
+                }
+              ]
+            },
+            {
+              "featureType": "road.highway",
+              "stylers": [
+                {
+                  "hue": "#FFC200"
+                },
+                {
+                  "saturation": -61.8
+                },
+                {
+                  "lightness": 45.599999999999994
+                },
+                {
+                  "gamma": 1
+                }
+              ]
+            },
+            {
+              "featureType": "road.arterial",
+              "stylers": [
+                {
+                  "hue": "#FF0300"
+                },
+                {
+                  "saturation": -100
+                },
+                {
+                  "lightness": 51.19999999999999
+                },
+                {
+                  "gamma": 1
+                }
+              ]
+            },
+            {
+              "featureType": "road.local",
+              "stylers": [
+                {
+                  "hue": "#FF0300"
+                },
+                {
+                  "saturation": -100
+                },
+                {
+                  "lightness": 52
+                },
+                {
+                  "gamma": 1
+                }
+              ]
+            },
+            {
+              "featureType": "water",
+              "stylers": [
+                {
+                  "hue": "#0078FF"
+                },
+                {
+                  "saturation": -13.200000000000003
+                },
+                {
+                  "lightness": 2.4000000000000057
+                },
+                {
+                  "gamma": 1
+                }
+              ]
+            },
+            {
+              "featureType": "poi",
+              "stylers": [
+                {
+                  "hue": "#2F4F4F"
+                },
+                {
+                  "saturation": -1.0989010989011234
+                },
+                {
+                  "lightness": 11.200000000000017
+                },
+                {
+                  "gamma": 1
+                }
+              ]
+            }
+          ]
+      });
+      var marker = new google.maps.Marker({
+        position: position,
+        map: map,
+        title:'交通',
+        animation: google.maps.Animation.BOUNCE
+      });
+      }
+    }
+
+
+    let vm = new Vue({
+      el: "#app",
+      data: {
+        contents: [],
+        area:'',
+        Latitude:'',
+        MapLink: '',
+        LocationName:'',
+      },
+      computed:{
+        SelectArea(){
+          let SelectArray={};
+          let j=0;
+          this.contents.forEach((item)=>{
+            if(!SelectArray[item.District]) SelectArray[item.District]=1
+            else SelectArray[item.District]++
+          })
+          console.log(SelectArray)
+          return SelectArray
+        },
+        AfterSelectShow(){
+          if(this.area==='all'){
+            return this.contents
+          }else{
+            return this.contents.filter((item)=>{
+              return item.District==this.area
+            })
+          }
+        }
+                
+      },
+      methods:{
+        ShowMap(Name){
+          for(let j=0;j<this.contents.length;j++){
+            if(this.contents[j].StationName===Name){
+              Latitude= this.contents[j].Latitude;
+
+              Longitude= this.contents[j].Longitude;
+              
+              let StationName= this.contents[j].StationName;
+              console.log(Latitude, Longitude)
+              vm.MapLink = 'https://www.google.com/maps/embed/v1/search?key=AIzaSyAKPRtjCaWwtsRtJLlQWDC4c9UapdhJu1o&q='+ StationName+'&zoom=16&center='+ Latitude+','+ Longitude
+              console.log(vm.MapLink)
+              initMap()
+              break;
+            }
+          }
+          console.log(Name)
+          }
+          
+      },
+      mounted() {
+        let url = 'https://cors-anywhere.herokuapp.com/http://tbike.tainan.gov.tw:8081/Service/StationStatus/Json';
+        //https://cors-anywhere.herokuapp.com/
+        axios.get(url).then((res) => {
+          this.contents = res.data
+          console.log(this.contents);
+
+        })
+      }
+    })
+
+  </script>
+</body>
+
+</html>
