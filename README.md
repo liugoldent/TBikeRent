@@ -11,5 +11,6 @@
 ## Using
 
 - [X] [Vue.js]
+- [X] [SCSS]
 - [X] [T-Bike 臺南市公共自行車租賃站資訊](http://tbike.tainan.gov.tw:8081/Service/StationStatus/Json)
 - [X] [Google Maps API]
