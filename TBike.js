@@ -8,7 +8,7 @@
 // }
 // }
 var cssheight = $(window).height();
-$('#map').css('height', 'height');
+$('#map').css('height', 'cssheight');
 $(function () {
   var w = $(window).width();
   var h = $(window).height();
